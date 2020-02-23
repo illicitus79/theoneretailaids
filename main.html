@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The One</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/onestyle.css">
+	<script src="https://cdn.jsdelivr.net/jsbarcode/3.6.0/JsBarcode.all.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+	<!-- <script src="scripts/onejs.js"></script> -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119461530-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-119461530-1');
+</script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<div class="inner">
+				<a href="main.html">
+					<img class="homeb" src="images/home.png"/></a>
+					<a href="main.html"><h1 class="homeb">One Stop Retail</h1></a>
+				</div>
+		</div>
+
+		<!-- Adds start here -->
+
+		<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- illicitusadds -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6254877871635580"
+     data-ad-slot="9555458100"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<!-- Adds end here -->
+			<div class="row">
+				<div class="row1 col-12">
+					<div class="col-6 module">
+						<a id="lnkcalbar"><img src="images\checkdigit.png"  class="devmods"/></a>
+						<p>Check Digit Calculator</p>
+					</div>
+					<div class="col-6 module">
+						<a id="lnkbargen"><img src="images\mulbar.png"  class="devmods"/></a>
+						<p>Barcode Generator</p>
+					</div>
+				</div>
+				<div class="row2 col-12">
+					<div class="col-6 module">
+						<a id="lnkvalbarcd"><img src="images\validation.jpg"  class="devmods"/></a>
+						<p>Barcode Validity Check</p>
+					</div>
+					<div class="col-6 module">
+						<a id="lnkqrbargen"><img src="images\qrcde.png"  class="devmods"/></a>
+						<p>QR Code generator</p>
+					</div>
+				</div>
+
+				<!-- Modal screen -->
+				<div id="mymodal" class="modal">
+					<!-- <div class="modal-header"></div> -->
+					<!-- This is check digit calculation segment -->
+					<div class="modal-content" id="calbarcd">
+						<span class="close">&times;</span>
+						<label>Please enter the barcode to calculate the check digit</label>
+						<input type="text" class="barnum" id="itmid"/>
+						<div>
+							<a href="javascript:" class="calccd" onclick="return calculatecd()">Calculate</a>
+						</div>
+						<div id="finbar"><label>The barcode with check digit is as below</label>
+							<div class="barnum" id="cditmid"></div>
+							<svg id="barcode" class="bde"></svg>
+						</div>
+					</div>
+
+					<!-- This is Barcode generation segment -->
+					<div class="modal-content" id="scrbargen">
+						<div class="modal-header"></div>
+						<span class="close">&times;</span>
+						<table class="bar-table" id="tblBarcde">
+						</table>
+						<div id="printbtn" class="col-9 col-m-12">
+							<a href="javascript:" class="calccd" onclick="return printdiv()">Print</a>
+						</div>
+						<div class="usrinput" id="usrin">
+							<label>Please enter the Item IDs in below text area</label>
+							<textarea id="itminput" class="usrinp-txtarea"></textarea>
+							<!-- Extra edit -->
+							<div style="margin-bottom:10px;">
+								<input type="checkbox" id="fg_calcd"><p style="display:inline;font-family:Cairo,sans-serif;">Tick to calculate check digit</p>
+							</div>
+							<div><a href="javascript:" class="calccd" onclick="return createbarcode()">Create Barcode</a></div>
+						</div>
+					</div>
+
+					<!-- This is qr code generation segment -->
+					<div class="modal-content" id="scrqrcgen">
+						<span class="close">&times;</span>
+						<div class="qrresult" id="qres">
+							<table class="qrtable" id="qrtble"></table>
+							<div id="printbtnqr" class="col-9 col-m-12" style="display:none;">
+							<a href="javascript:" class="calccd" onclick="return printdiv1()">Print</a>
+						</div>
+						</div>
+						<div class="usrinput" id="forqr">
+							<label>Please enter URL/Text to convert to QR Code below</label>
+							<textarea id="urlinput" class="usrinp-txtarea"></textarea>
+							<div><a href="javascript:" class="calccd" onclick="return createqrcode()">Generate QR Code</a></div>
+						</div>
+					</div>
+
+					<!-- This is Barcode validation segment -->
+					<div class="modal-content" id="scrchkdigval">
+						<span class="close">&times;</span>
+						<div class="cdvalresult" id="cdres">
+							<label id="lblvalresult" style="font-size:20px;">Validation result for you input is as below</label>
+							<table class="cdvaltable" id="cdvaltbl" style="border-radius: 6px;"></table>
+							<div id="expdata" class="col-9 col-m-12" style="display:none;">
+								<a href="javascript:" class="calccd" onclick="exportTableToCSV('ValidationResult.csv')">Download Result</a>
+							</div>
+						</div>
+						<div class="usrinput" id="forvalbar">
+							<label>Please enter the Barcodes that you need to validate in below text area</label>
+							<textarea id="barvalinput" class="usrinp-txtarea"></textarea>
+							<div><a href="javascript:" class="calccd" onclick="return valbarcd()">Validate</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<div class="footer">
+	<p>This website functions are developed by Illicitus</p>
+</div>
+
+<script src="scripts/onejs.js"></script>
+<script src="scripts/jquery.qrcode.min.js"></script>
+
+<!-- <footer>
+	<p>This application is copyright to Illicitus</p>
+</footer> -->
+</body>
+</html>
