@@ -1,5 +1,9 @@
 document.getElementById("calcCheckDigit").addEventListener("click", calculatecd, false);
 document.getElementById("btnGenBarcodes").addEventListener("click", createbarcode, false);
+document.getElementById("btnBarcodeClear").addEventListener("click", function() { $("#barcodeUserEntry").val(''); }, false);
+document.getElementById("btnGenQr").addEventListener("click", createqrcode, false);
+document.getElementById("btnClearQr").addEventListener("click", function() { $("#urlinput").val(''); }, false);
+
 
 function calculatecd() {
     var barcodenum = document.getElementById("itmid").value;
@@ -113,4 +117,56 @@ function createbarcode() {
             alert("Please enter numbers only");
         }
     }
+}
+
+
+function createqrcode() {
+    //document.getElementById("qrtble").style.display="block";
+    var lines = document.getElementById("urlinput").value.split("\n");
+    document.getElementById("tblResult").innerHTML = "";
+    if (lines[0] == "") {
+        alert("Please enter the Item Ids for generating barcodes");
+    } else {
+        // var barcodeno="";
+        for (var i = 0; i < lines.length;) {
+            if (lines[i] != "") {
+                if (i != lines.length - 1) {
+                    document.getElementById("tblResult").innerHTML += "<tr><td><div class=\"qrholder\" id=\"qrbrcde" + i + "\"></div></td><td><div class=\"qrholder\" id=\"qrbrcde" + (i + 1) + "\"></div></td></tr>";
+
+                    new QRCode(document.getElementById("qrbrcde" + i), lines[i]);
+                    sleep(1000)
+                    new QRCode(document.getElementById("qrbrcde" + (i + 1)), lines[i + 1]);
+                    sleep(2000);
+                    i = i + 2;
+
+                } else {
+
+                    document.getElementById("tblResult").innerHTML += "<tr><td><div class=\"qrholder\" id=\"qrbrcde" + i + "\"></div></td><td></td></tr>";
+                    //jquery("#qrbrcde"+i).qrcode(lines[i]);
+
+                    //Reference "https://github.com/davidshimjs/qrcodejs"
+                    new QRCode(document.getElementById("qrbrcde" + i), lines[i]);
+                    i++;
+                }
+            } else {
+                i++;
+            }
+        }
+        var today = new Date();
+        var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        var dateTime = date + ' ' + time;
+        document.getElementById("modalLabel").innerHTML = "QR Codes Generated at -- <span style='color:green;text-decoration:underline; font-size:medium;'>" + dateTime + "</span>";
+
+    }
+
+
+}
+
+function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+        currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
 }

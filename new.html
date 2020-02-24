@@ -96,7 +96,7 @@
                             <div class="col-md-4">
                                 <div class="justify-content-center">
                                     <div class="d-md-block">
-                                        <h4 class="text-center">Check digit calculator</h3>
+                                        <h4 class="text-center checkDigitLabel">Check digit calculator</h3>
                                     </div>
                                     <div class="d-flex"><img class="img-fluid img-thumbnail m-auto" src="images/checkdigit.png"></div>
 
@@ -147,10 +147,13 @@
                                                 <textarea name="" id="barcodeUserEntry" cols="30" rows="10" class="w-100 p-4" placeholder="Enter Barcodes here, one per line..."></textarea>
                                             </div>
                                             <div class="col-md-4">
-                                                <a href="#" id="btnGenBarcodes" class="btn btn-blue align-content-middle d-block mt-5 mr-2" data-toggle="modal" data-target="#exampleModal">Generate Barcodes</a>
-                                                <a href="#" class="btn btn-green align-content-middle d-block mt-5 mr-2">Clear Input</a>
-                                                <div class="d-flex mt-5" data-toggle="tooltip" data-placement="top" title="If you tick, make sure that Barcodes not have checkdigit"><input type="checkbox" id="fg_calcd" class="d-block" style="margin-top:6px;">
-                                                    <p style="display:inline; font-family:Cairo,sans-serif; margin-left:10px;">Tick to calculate check digit</p>
+                                                <a href="javascript:" id="btnGenBarcodes" class="btn btn-blue align-content-middle d-block mt-5 mr-2" data-toggle="modal" data-target="#exampleModal">Generate Barcodes</a>
+                                                <a href="javascript:" id="btnBarcodeClear" class="btn btn-green align-content-middle d-block mt-5 mr-2">Clear Input</a>
+                                                <div class="d-block mt-5" data-toggle="tooltip" data-placement="top" title="If you tick, make sure that Barcodes not have checkdigit">
+                                                    <div class="w-100 d-flex justify-content-center">
+                                                        <input type="checkbox" id="fg_calcd" class="d-block" style="margin-top:6px;">
+                                                    </div>
+                                                    <p class="text-center">Tick to calculate check digit</p>
                                                 </div>
 
                                             </div>
@@ -185,8 +188,8 @@
                                                 <textarea name="" id="urlinput" cols="30" rows="10" class="w-100 p-4" placeholder="Enter the data here to convert to QR code.."></textarea>
                                             </div>
                                             <div class="col-md-4">
-                                                <a href="#" class="btn btn-coral align-content-middle d-block mt-5 mr-2">Generate QR Codes</a>
-                                                <a href="#" class="btn btn-teal align-content-middle d-block mt-5 mr-2">Clear Input</a>
+                                                <a href="javascript:" id="btnGenQr" class="btn btn-coral align-content-middle d-block mt-5 mr-2" data-toggle="modal" data-target="#exampleModal">Generate QR Codes</a>
+                                                <a href="javascript:" id="btnClearQr" class="btn btn-teal align-content-middle d-block mt-5 mr-2">Clear Input</a>
 
                                             </div>
                                         </div>
@@ -310,7 +313,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-maroon" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-purple">Print</button>
+                    <button type="button" id="btnPrint" style="width:80px" class="btn btn-purple">Print</button>
                 </div>
             </div>
         </div>
@@ -330,10 +333,9 @@
     <script>
         $(document).ready(function() {
             $("#finbar").css('display', 'none');
+            $("#barcodeUserEntry").val('');
         });
     </script>
-
-
 </body>
 
 </html>
