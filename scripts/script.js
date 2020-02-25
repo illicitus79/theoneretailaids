@@ -70,6 +70,7 @@ function createbarcode() {
     var lines = document.getElementById("barcodeUserEntry").value.split("\n");
     // var calcdfg=document.getElementById("fg_calcd").checked;
     //    alert(calcdfg);
+    document.getElementById("modalResult").innerHTML = "<table id=\"tblResult\" class=\"w-100 table table-bordered\"></table>";
     if (lines[0] == "") {
         alert("Please enter the Item Ids for generating barcodes");
     } else {
@@ -223,7 +224,9 @@ function ValidateBarcode() {
     var lines = document.getElementById("valBarcodeInput").value.split("\n");
     // var calcdfg=document.getElementById("fg_calcd").checked;
     //    alert(calcdfg);
+    document.getElementById("modalResult").innerHTML = "<table id=\"tblResult\" class=\"w-100 table table-bordered\"></table>";
     document.getElementById("tblResult").innerHTML = "";
+
     if (lines[0] == "") {
         alert("Please enter the barcodes to validate or dont keep the first line empty");
     } else {
